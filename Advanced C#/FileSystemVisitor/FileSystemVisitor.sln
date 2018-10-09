@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSystemVisitor", "FileSy
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleMonitor", "ConsoleMonitor\ConsoleMonitor.csproj", "{18DD11A4-30D9-4103-ABDF-3DDA3CE43F04}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "FileSystemMonitorTests\Tests.csproj", "{B50198C0-8254-4E62-97CD-CF60EA4965C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{18DD11A4-30D9-4103-ABDF-3DDA3CE43F04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18DD11A4-30D9-4103-ABDF-3DDA3CE43F04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18DD11A4-30D9-4103-ABDF-3DDA3CE43F04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B50198C0-8254-4E62-97CD-CF60EA4965C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B50198C0-8254-4E62-97CD-CF60EA4965C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B50198C0-8254-4E62-97CD-CF60EA4965C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B50198C0-8254-4E62-97CD-CF60EA4965C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
