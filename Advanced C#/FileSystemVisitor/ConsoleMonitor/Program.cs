@@ -9,17 +9,16 @@ namespace ConsoleMonitor
 
 		static void Main(string[] args)
 		{
-			var path = @"C:\Users\Yury_Samaradau\Desktop\mentoring2018\Introduction to .NET\StandartClassLibrary";
+			Console.Write("Input the path: ");
+			var path = Console.ReadLine();
 			visitor = new FileSystemVisitor(path);
 
 			visitor.OnSearchStart += Visitor_OnSearchStart;
 			visitor.OnSearchStop += Visitor_OnSearchStop;
-			int counter = 0;
 			foreach (var item in visitor)
 			{
-				counter++;
+				Console.WriteLine(item);
 			}
-			Console.WriteLine(counter);
 			Console.ReadKey();
 		}
 

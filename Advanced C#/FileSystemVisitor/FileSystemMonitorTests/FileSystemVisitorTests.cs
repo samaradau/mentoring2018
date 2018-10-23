@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using FileVisitor;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -24,7 +25,7 @@ namespace Tests
 		[TestMethod]
 		public void GetEnumerator_OnlyPath_AllFiles()
 		{
-			var path = @"C:\Users\Yury_Samaradau\Desktop\mentoring2018\Introduction to .NET\StandartClassLibrary";
+			var path = Directory.GetCurrentDirectory();
 			FileSystemVisitor fileSystemVisitor = new FileSystemVisitor(path);
 			int counter = 0;
 
@@ -39,8 +40,8 @@ namespace Tests
 		[TestMethod]
 		public void GetEnumerator_WhithPathAndFilter_AllFiles()
 		{
-			var path = @"C:\Users\Yury_Samaradau\Desktop\mentoring2018\Introduction to .NET\StandartClassLibrary";
-			FileSystemVisitor fileSystemVisitor = new FileSystemVisitor(path, x => x.Contains(".cs"));
+			var path = Directory.GetCurrentDirectory();
+			FileSystemVisitor fileSystemVisitor = new FileSystemVisitor(path, x => x.Contains("."));
 			int counter = 0;
 
 			foreach (var item in fileSystemVisitor)

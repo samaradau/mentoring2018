@@ -29,16 +29,24 @@ namespace FileVisitor
 
 			string[] dirs = Array.Empty<string>();
 			string[] files = Array.Empty<string>();
-
-			if (path != null)
-			{
-				dirs = Directory.GetDirectories(path);
-				files = Directory.GetFiles(path);
-			}
-			else
-			{
-				throw new ArgumentNullException(nameof(path));
-			}
+			
+				if (path != null)
+				{
+					try
+					{
+						dirs = Directory.GetDirectories(path);
+						files = Directory.GetFiles(path);
+					}
+					catch (Exception)
+					{
+						// eat exception
+					}
+				}
+				else
+				{
+					throw new ArgumentNullException(nameof(path));
+				}
+			
 
 			_files = (_files.Concat(files)).ToArray();
 
