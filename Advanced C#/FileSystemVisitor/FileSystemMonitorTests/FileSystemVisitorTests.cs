@@ -8,35 +8,47 @@ namespace Tests
 	public class FileSystemVisitorTests
 	{
 		[TestMethod]
-		public void GetAllDirectoryElements_NullPath_ThrowsException()
+		public void GetEnumerator_PathIsNull_ThrowsArgNullException()
 		{
-			FileSystemVisitor fsv = new FileSystemVisitor();
-			string[] files = Array.Empty<string>();
-			string[] dirs = Array.Empty<string>();
+			FileSystemVisitor fileSystemVisitor = new FileSystemVisitor(null);
 
-			Assert.ThrowsException<ArgumentNullException>(() => fsv.GetAllDirectoryElements(null, ref dirs, ref files));
+			Assert.ThrowsException<ArgumentNullException>(() =>
+			{
+				foreach (var item in fileSystemVisitor)
+				{
+					item.ToString();
+				}
+			});
 		}
 
 		[TestMethod]
-		public void GetAllDirectoryElements_NullFiles_ThrowsException()
+		public void GetEnumerator_OnlyPath_AllFiles()
 		{
-			FileSystemVisitor fsv = new FileSystemVisitor();
-			string[] files = Array.Empty<string>();
-			string[] dirs = Array.Empty<string>();
+			var path = @"C:\Users\Yury_Samaradau\Desktop\mentoring2018\Introduction to .NET\StandartClassLibrary";
+			FileSystemVisitor fileSystemVisitor = new FileSystemVisitor(path);
+			int counter = 0;
 
-			Assert.ThrowsException<ArgumentNullException>(() => fsv.GetAllDirectoryElements(null, ref dirs, ref files));
+			foreach (var item in fileSystemVisitor)
+			{
+				counter++;
+			}
+
+			Assert.IsTrue(counter > 0);
 		}
 
 		[TestMethod]
-		public void GetAllDirectoryElements_NullDirs_ThrowsException()
+		public void GetEnumerator_WhithPathAndFilter_AllFiles()
 		{
-			FileSystemVisitor fsv = new FileSystemVisitor();
-			string[] files = Array.Empty<string>();
-			string[] dirs = Array.Empty<string>();
+			var path = @"C:\Users\Yury_Samaradau\Desktop\mentoring2018\Introduction to .NET\StandartClassLibrary";
+			FileSystemVisitor fileSystemVisitor = new FileSystemVisitor(path, x => x.Contains(".cs"));
+			int counter = 0;
 
-			Assert.ThrowsException<ArgumentNullException>(() => fsv.GetAllDirectoryElements(null, ref dirs, ref files));
+			foreach (var item in fileSystemVisitor)
+			{
+				counter++;
+			}
+
+			Assert.IsTrue(counter > 0);
 		}
-
-
 	}
 }

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
 namespace FileVisitor
@@ -12,69 +10,88 @@ namespace FileVisitor
 	/// </summary>
 	public class FileSystemVisitor
 	{
-		private int iteration = 0;
+		private int iteration;
+		private string _path;
+		private string[] _files;
+		private Predicate<string> _filter;
+
 		public event EventHandler OnSearchStart;
 		public event EventHandler OnSearchStop;
 
-		/// <summary>
-		/// Gets all directory elements.
-		/// </summary>
-		/// <param name="path">Path to folder to analyse.</param>
-		/// <param name="directories">Variable that will contain all directories inside.</param>
-		/// <param name="files">Variable that will contain all files inside.</param>
-		public void GetAllDirectoryElements(string path, ref string[] directories, ref string[] files)
+		private void Search(string path)
 		{
 			if (iteration == 0)
 			{
 				OnSearchStart?.Invoke(this, null);
 			}
-			
+
 			iteration++;
 
-			string[] _dirs = Array.Empty<string>();
-			string[] _files = Array.Empty<string>();
+			string[] dirs = Array.Empty<string>();
+			string[] files = Array.Empty<string>();
 
 			if (path != null)
 			{
-				_dirs = Directory.GetDirectories(path);
-				_files = Directory.GetFiles(path);
+				dirs = Directory.GetDirectories(path);
+				files = Directory.GetFiles(path);
 			}
 			else
 			{
 				throw new ArgumentNullException(nameof(path));
 			}
 
-			if (files != null)
-			{
-				files = (files.Concat(_files)).ToArray();
-			}
-			else
-			{
-				throw new ArgumentNullException(nameof(files));
-			}
-			if (_dirs.Count() == 0)
+			_files = (_files.Concat(files)).ToArray();
+
+			if (dirs.Length == 0)
 			{
 				return;
 			}
 
-			if (directories != null)
-			{
-				directories = (directories.Concat(_dirs)).ToArray();
-			}
-			else
-			{
-				throw new ArgumentNullException(nameof(directories));
-			}
+			_files = (_files.Concat(dirs)).ToArray();
 
-			for (int i = 0; i < _dirs.Count(); i++)
+			for (int i = 0; i < dirs.Count(); i++)
 			{
-				GetAllDirectoryElements(_dirs[i], ref directories, ref files);
+				Search(dirs[i]);
 				iteration--;
 			}
 
 			if (iteration == 1)
 			{
 				OnSearchStop?.Invoke(this, null);
+			}
+		}
+
+		public FileSystemVisitor(string path)
+		{
+			_files = new string[] { };
+			_path = path;
+		}
+		
+		public FileSystemVisitor(string path, Predicate<string> filter) : this(path)
+		{
+			_filter = filter;
+		}
+
+		public IEnumerator GetEnumerator()
+		{
+			if (_files.Length == 0)
+			{
+				Search(_path);
+			}
+
+			for (int i = 0; i < _files.Length; i++)
+			{
+				if (_filter != null)
+				{
+					if (_filter(_files[i]))
+					{
+						yield return _files[i];
+					}
+				}
+				else
+				{
+					yield return _files[i];
+				}
 			}
 		}
 	}
