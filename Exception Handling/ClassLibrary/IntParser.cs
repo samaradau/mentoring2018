@@ -50,7 +50,7 @@ namespace ClassLibrary
 				if (digit != -1)
 				{
 					result += digit * (int)Math.Pow((double)10, currentRang);
-					if (result > Int32.MaxValue || result *- 1 < Int32.MinValue)
+					if (result > Int32.MaxValue || result * -1 < Int32.MinValue)
 					{
 						throw new OverflowException();
 					}
@@ -58,7 +58,7 @@ namespace ClassLibrary
 				}
 				else
 				{
-					throw new NotFiniteNumberException();
+					throw new FormatException();
 				}
 			}
 

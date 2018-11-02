@@ -17,9 +17,13 @@ namespace ConsoleApp
 				var str = Console.ReadLine();
 				if (str != "quit")
 				{
-					if (!String.IsNullOrWhiteSpace(str))
+					try
 					{
 						Console.WriteLine(str[0]);
+					}
+					catch (IndexOutOfRangeException e)
+					{
+						Console.WriteLine(e.Message);
 					}
 				}
 				else
