@@ -15,7 +15,7 @@ namespace ConsoleClassLibraryTest
 		{
 			Console.Write("Input the string: ");
 			var str = Console.ReadLine();
-			int b = 0;
+			int b = -1;
 			var parser = new Int32Parser();
 
 			try
