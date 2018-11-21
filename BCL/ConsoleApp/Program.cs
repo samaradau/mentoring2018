@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Globalization;
 using System.IO;
+using System.Resources;
 using System.Threading;
+using ConsoleApp.Properties;
 using Microsoft.Win32.SafeHandles;
 
 namespace ConsoleApp
@@ -32,8 +35,15 @@ namespace ConsoleApp
 			{
 				Directory.CreateDirectory(defaultFolder);
 			}
-
 			rules = new Dictionary<string, string>();
+			var rulesClass = new ResourceManager(typeof(Rules));
+			var resourceSet = rulesClass.GetResourceSet(CultureInfo.CurrentUICulture, true, true);
+
+			foreach (DictionaryEntry entry in resourceSet)
+			{
+				rules.Add(entry.Key.ToString(), entry.Value.ToString());
+			}
+
 			paths = ConfigurationManager.AppSettings["Paths"].Split(',');
 
 			fswlList = new List<FileSystemWatcher>();
