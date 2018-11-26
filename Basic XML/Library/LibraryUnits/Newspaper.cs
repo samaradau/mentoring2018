@@ -7,8 +7,9 @@ using System.Xml.Serialization;
 
 namespace Library.Units
 {
+	[XmlInclude(typeof(Newspaper))]
 	[Serializable]
-	public class Newspaper : IUnit
+	public class Newspaper : Item
 	{
 		public string Name { get; set; }
 		public string PublishingCity { get; set; }

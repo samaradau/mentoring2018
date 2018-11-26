@@ -9,8 +9,9 @@ using System.Xml.Serialization;
 
 namespace Library.Units
 {
+	[XmlInclude(typeof(Book))]
 	[Serializable]
-    public class Book : IUnit
+    public class Book : Item
 	{
 		public string Name { get; set; }
 		public string Author { get; set; }

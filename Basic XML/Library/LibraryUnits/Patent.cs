@@ -7,8 +7,9 @@ using System.Xml.Serialization;
 
 namespace Library.Units
 {
+	[XmlInclude(typeof(Patent))]
 	[Serializable]
-	public class Patent : IUnit
+	public class Patent : Item
 	{
 		public string Name { get; set; }
 		public string Inventor { get; set; }

@@ -4,17 +4,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Serialization;
 using Library.Units;
 
 namespace Library
 {
-	public class Library : IEnumerable<IUnit>
+	[Serializable]
+	[XmlRoot(ElementName = "Library")]
+	public class Library : IEnumerable<Item>
 	{
-		public List<IUnit> Units { get; set; }
+		[XmlElement("UnloadDate")]
+		public DateTime UnloadDate { get; set; }
+
+		[XmlElement("Items")]
+		public List<Item> Units { get; set; }
 
 		public Library()
 		{
-			Units = new List<IUnit>();
+			Units = new List<Item>();
+		}
+
+		public void Add(Item item)
+		{
+			Units.Add(item);
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()
@@ -22,7 +35,7 @@ namespace Library
 			return Units.GetEnumerator();
 		}
 
-		public IEnumerator<IUnit> GetEnumerator()
+		public IEnumerator<Item> GetEnumerator()
 		{
 			return Units.GetEnumerator();
 		}
