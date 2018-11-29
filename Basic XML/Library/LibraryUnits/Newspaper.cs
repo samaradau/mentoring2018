@@ -7,6 +7,9 @@ using System.Xml.Serialization;
 
 namespace Library.Units
 {
+	/// <summary>
+	/// Represents a Newspaper.
+	/// </summary>
 	[XmlInclude(typeof(Newspaper))]
 	[Serializable]
 	public class Newspaper : Item

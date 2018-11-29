@@ -9,6 +9,9 @@ using System.Xml.Serialization;
 
 namespace Library.Units
 {
+	/// <summary>
+	/// Represents a Book.
+	/// </summary>
 	[XmlInclude(typeof(Book))]
 	[Serializable]
     public class Book : Item

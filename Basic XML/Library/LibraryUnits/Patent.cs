@@ -7,6 +7,9 @@ using System.Xml.Serialization;
 
 namespace Library.Units
 {
+	/// <summary>
+	/// Represents a patent.
+	/// </summary>
 	[XmlInclude(typeof(Patent))]
 	[Serializable]
 	public class Patent : Item
