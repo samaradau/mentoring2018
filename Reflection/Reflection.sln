@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyInjector", "DependencyInjector\DependencyInjector.csproj", "{CF580A11-7322-45CB-8E26-32085DD68181}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{B109365A-D1EB-416E-B0F2-44423109D493}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF580A11-7322-45CB-8E26-32085DD68181}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF580A11-7322-45CB-8E26-32085DD68181}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF580A11-7322-45CB-8E26-32085DD68181}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF580A11-7322-45CB-8E26-32085DD68181}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B109365A-D1EB-416E-B0F2-44423109D493}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B109365A-D1EB-416E-B0F2-44423109D493}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B109365A-D1EB-416E-B0F2-44423109D493}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B109365A-D1EB-416E-B0F2-44423109D493}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1ABCC2F5-D562-493D-9D14-0289EF3FA5D4}
+	EndGlobalSection
+EndGlobal
